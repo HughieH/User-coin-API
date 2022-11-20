@@ -1,0 +1,39 @@
+{
+  "users": [
+    {
+      "userID": "bqNiw",
+      "userName": "Hugh",
+      "coinBalance": 98
+    },
+    {
+      "id": "NKytn",
+      "userName": "Jesse",
+      "coinBalance": 52
+    },
+    {
+      "id": "rdn4P",
+      "userName": "waikin",
+      "coinBalance": 100
+    },
+    {
+      "id": "sRjBa",
+      "userName": "jason",
+      "coinBalance": 100
+    },
+    {
+      "id": "zrXi8",
+      "userName": "jphn",
+      "coinBalance": 100
+    },
+    {
+      "id": "f3Qdw",
+      "userName": "shesh",
+      "coinBalance": 100
+    },
+    {
+      "id": "7rPcZ",
+      "userName": "jonathan",
+      "coinBalance": 100
+    }
+  ]
+}
