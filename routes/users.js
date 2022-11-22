@@ -21,7 +21,7 @@ const idLength = 5;
  *           type: string
  *           description: The username of the user
  *         coinBalance:
- *           type: int
+ *           type: integer
  *           description: Coin balance of the user
  *       example:
  *         "userID": "bqNiw"
@@ -208,7 +208,7 @@ const idLength = 5;
  *      404:
  *        description: User 1, User 2, or BOTH were not found in the database.
  *      500:
- *        description: Some error happened
+ *        description: Internal server error
  */
 
  router.put("/:userName1/:userName2/:coinsToTransfer", (req, res) => {
@@ -255,25 +255,15 @@ const idLength = 5;
 			return res.status(400).send(`${coinTransfer} is a negative amount and not allowed!`);
 		}
 
-		// Transfer coins from User 1 to User 2
-		//res.send(`${user1.userName} previously had ${user1.coinBalance} coins`);
+
 		const previousUser1Bal = user1.coinBalance;
 		user1.coinBalance -= coinTransfer;
-		//res.send(`${user1.userName} now has ${user1.coinBalance} coins`);
-		//res.send(`${user2.userName} previously had ${user2.coinBalance} coins`);
+
 		const previousUser2Bal = user2.coinBalance;
 		user2.coinBalance += coinTransfer;
-		//res.send(`${user2.userName} now has ${user2.coinBalance} coins`);
-		let userDBStr = userDB.data.users.toString();
-		console.log(userDB.data);
-		console.log(userDBStr);
-		userDB.write();
-
-		res.send(`
-
 		
-		userDBStr
-		`)
+		return res.send(`${user1.userName} previously had ${previousUser1Bal} coins, now they have ${user1.coinBalance} coins.\n` 
+		+ `${user2.userName} previously had ${previousUser2Bal} coins, now they have ${user2.coinBalance} coins.`)
 
 	} catch (error) {
 		console.log(error)
