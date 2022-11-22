@@ -57,7 +57,7 @@ const idLength = 5;
  *             schema:
  *               $ref: '#/components/schemas/User'
  *       400:
- *         description: User tried to input duiplicate name.
+ *         description: User tried to input duiplicate name. Username capitalization matters! For example, jason != Jason
  *       500:
  *         description: Internal server error
  */
@@ -69,24 +69,26 @@ const idLength = 5;
 	userDB.read();
 	let userArray = userDB.data.users; // array of users
 
-	// check if userName exists already
-	for (let i = 0; i < userArray.length; i++) {
-		if (userArray[i].userName === userInput) {
-			return res.status(400).send(`${userInput} is a duplicate name and already in the database!`)
-		}
-	}
-
 	try {
+		// Error 400: check if userName exists already
+		for (let i = 0; i < userArray.length; i++) {
+			if (userArray[i].userName === userInput) {
+				return res.status(400).send(`${userInput} is a duplicate name and already in the database!`)
+			}
+		}
+
 		const newUser = {
 			id: nanoid(idLength),
 			userName: userInput,
 			coinBalance: 100
 		};
 
+		// add user to database
 		userDB.data.users.push(newUser)
 		userDB.write()
 		
-		res.send(newUser)
+		// 200 OK
+		return res.send(newUser)
 
 	} catch (error) {
 		console.log(error)
@@ -114,11 +116,14 @@ const idLength = 5;
  */
 
  router.get("/", (req, res) => {
+	
 	try{
 		req.app.db.read()
 		const users = req.app.db.data;
-		console.log("Successful Read!")
-		res.send(users);
+		
+		// 200 OK
+		return res.send(users);
+
 	} catch(error) {
 		console.log(error)
 		return res.status(500).send(error);
@@ -163,10 +168,14 @@ const idLength = 5;
 		// check if userName exists already
 		for (let i = 0; i < userArray.length; i++) {
 			if (userArray[i].userName === userInput) {
+				// 200 OK
 				return res.send(userArray[i])
 			} 
 		}
-		return res.status(404).send(`${userInput} does not exist in the database.`)
+		// Error 404: If for loop exits without returning user object from DB, user does not exist
+		return res.status(404).send(`${userInput} does not exist in the database.`
+			+ ` Username capitalization matters! For example, jason != Jason`)
+	
 	} catch(error) {
 		console.log(error)
 		return res.status(500).send(error);
@@ -262,6 +271,7 @@ const idLength = 5;
 		const previousUser2Bal = user2.coinBalance;
 		user2.coinBalance += coinTransfer;
 		
+		// 200 OK
 		return res.send(`${user1.userName} previously had ${previousUser1Bal} coins, now they have ${user1.coinBalance} coins.\n` 
 		+ `${user2.userName} previously had ${previousUser2Bal} coins, now they have ${user2.coinBalance} coins.`)
 
