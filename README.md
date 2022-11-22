@@ -3,7 +3,7 @@
  
 I built the API in Node.js using Express as the main web framework and lowdb as the database. I decided to use lowb instead of a relational database like MySQL or PostgreSQL for demonstration purposes. To execute and test the API, please follow these steps:
 
-1) Download the repo / zip folder from this email to your computer locally.
+1) Download the repo to your computer locally.
 2) Unzip the files into any folder.
 3) Go to the directory of the folder "User-coin-API" in terminal or windows CLI
 4) Execute the index.js file with "node index.js"
