@@ -1,7 +1,7 @@
 # User-coin-API
- API in node.js with Swagger documentation. Server is created using Express with lowdb as the database. 
+ API in node.js with Swagger documentation. Server is created using Express with lowdb as the database. API was built to OpenAPI / Swagger Specifications Ver 3.0.3 with documentation doen in YAML (in the users.js file).
  
-I built the API in Node.js using Express as the web framework and lowdb as the database. To execute and test the API, please follow these steps:
+I built the API in Node.js using Express as the main web framework and lowdb as the database. I decided to use lowb instead of a relational database like MySQL or PostgreSQL for demonstration purposes. To execute and test the API, please follow these steps:
 
 1) Download the repo / zip folder from this email to your computer locally.
 2) Unzip the files into any folder.
