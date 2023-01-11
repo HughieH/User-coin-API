@@ -1,7 +1,7 @@
 import express from "express";
 import { nanoid } from "nanoid";
 const router = express.Router();
-const idLength = 5;
+const idLength = 5; //primary key
 
 /**
  * @swagger
@@ -62,7 +62,7 @@ const idLength = 5;
  *         description: Internal server error
  */
 
- router.post("/:userName", (req, res) => {
+ router.post("/:userName", (req, res) => { // route, callback function
 	
 	const userInput = req.params.userName;
 	let userDB = req.app.db;
