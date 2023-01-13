@@ -39,6 +39,11 @@
       "id": "O1xhL",
       "userName": "Peter",
       "coinBalance": 100
+    },
+    {
+      "id": "lZePG",
+      "userName": "waikin",
+      "coinBalance": 100
     }
   ]
 }

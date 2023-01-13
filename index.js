@@ -44,6 +44,7 @@ app.use("/coin-user-api", swaggerUI.serve, swaggerUI.setup(specs));
 // Coin User API database
 app.db = db;
 
+// Middleware
 app.use(cors());
 app.use(express.json());
 app.use(morgan("dev"));
